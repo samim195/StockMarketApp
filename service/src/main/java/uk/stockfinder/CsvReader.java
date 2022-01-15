@@ -19,7 +19,7 @@ public class CsvReader {
         String currentPath = testFile.getAbsolutePath();
         System.out.println("current path is: " + currentPath);
 
-        fileName = currentPath + "/service/src/main/resources/" + fileName;
+        fileName = currentPath + "/src/main/resources/" + fileName;
 
 
         CSVReader reader = new CSVReaderBuilder(new FileReader(fileName))
