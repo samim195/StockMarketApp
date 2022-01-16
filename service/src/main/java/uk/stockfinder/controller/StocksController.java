@@ -32,10 +32,9 @@ public class StocksController {
     }
 
     @GetMapping("")
-    public @ResponseBody HttpStatus getStocks() throws Exception {
+    public List<Stock> getStocks() throws Exception {
         List<Stock> allStocks = stocksService.getAllStocks();
-        stocksData.setData(allStocks);
-        return HttpStatus.OK;
+        return allStocks;
     }
 
     @GetMapping("/name/{name}")
