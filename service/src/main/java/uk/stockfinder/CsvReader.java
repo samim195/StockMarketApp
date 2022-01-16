@@ -42,6 +42,17 @@ public class CsvReader {
                         .capitalisation(data[14])
                         .index(data[15])
                         .sector(data[16])
+                        .dividend2017(data[20])
+                        .dividend2018(data[21])
+                        .dividend2019(data[22])
+                        .dividend2020(data[23])
+                        .dividend2021(data[24])
+                        .book(data[27])
+                        .intangibles(data[28])
+                        .cash(data[29])
+                        .turnover(data[30])
+                        .noOfShares(data[31])
+                        .latestYield(data[33])
                         .build()).collect(Collectors.toList());
 
         return stockList;
