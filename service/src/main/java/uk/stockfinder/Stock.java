@@ -21,4 +21,15 @@ public class Stock {
     private String capitalisation;
     private String index;
     private String sector;
+    private String dividend2017;
+    private String dividend2018;
+    private String dividend2019;
+    private String dividend2020;
+    private String dividend2021;
+    private String book;
+    private String intangibles;
+    private String cash;
+    private String turnover;
+    private String noOfShares;
+    private String latestYield;
 }
