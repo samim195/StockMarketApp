@@ -10,7 +10,6 @@ import uk.stockfinder.Stock;
 import uk.stockfinder.StocksData;
 import uk.stockfinder.service.StocksService;
 
-import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,8 +38,8 @@ public class StocksController {
         return HttpStatus.OK;
     }
 
-    @GetMapping("/name")
-    public @ResponseBody List<Stock> getStockByName(@RequestParam  String name) throws Exception {
+    @GetMapping("/name/{name}")
+    public @ResponseBody List<Stock> getStockByName(@PathVariable("name") String name) throws Exception {
         return stocksService.getStockByName(name);
     }
 
