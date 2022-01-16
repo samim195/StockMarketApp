@@ -27,6 +27,17 @@ public class CsvReaderTest {
                 .capitalisation("1,425")
                 .index("FTSE250")
                 .sector("Travel")
+                .dividend2017("24")
+                .dividend2018("19.6")
+                .dividend2019("15.7")
+                .dividend2020("11")
+                .dividend2021("9")
+                .book("13")
+                .intangibles("487")
+                .cash("164")
+                .turnover("190")
+                .noOfShares("698")
+                .latestYield("3.4%")
                 .build();
 
         //Then
@@ -36,5 +47,8 @@ public class CsvReaderTest {
         Assertions.assertEquals(build.getName(), stockList.get(0).getName());
         Assertions.assertEquals(build.getPrice(), stockList.get(0).getPrice());
         Assertions.assertEquals(build.getEpsGrowth(), stockList.get(0).getEpsGrowth());
+        Assertions.assertEquals(build.getBook(), stockList.get(0).getBook());
+        Assertions.assertEquals(build.getTurnover(), stockList.get(0).getTurnover());
+        Assertions.assertEquals(build.getLatestYield(), stockList.get(0).getLatestYield());
     }
 }
