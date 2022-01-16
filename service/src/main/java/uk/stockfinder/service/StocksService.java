@@ -27,11 +27,7 @@ public class StocksService {
     public List<Stock> getStockByName(String stockName) throws Exception {
         csvReader = new CsvReader();
         List<Stock> stocks = csvReader.readStockFromFile(FileConstant.FILE_NAME);
-        List<Stock> collection = stocks.stream().filter(stock -> stock.getName().equals(stockName)).collect(Collectors.toList());
-        return collection;
+        return stocks.stream().filter(stock -> stock.getName().equals(stockName)).collect(Collectors.toList());
     }
 
-    public Stock getStockByName() {
-        return null;
-    }
 }
