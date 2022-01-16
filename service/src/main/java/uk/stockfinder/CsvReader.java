@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileReader;
+import java.net.URL;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,14 +15,11 @@ import java.util.stream.Collectors;
 public class CsvReader {
 
 
-    public List<Stock> readStockFromFile(String fileName) throws Exception {
+    public List<Stock> readStockFromFile(String file) throws Exception {
 
-        File testFile = new File("");
-        String currentPath = testFile.getAbsolutePath();
-        System.out.println("current path is: " + currentPath);
 
-        fileName = currentPath + "/src/main/resources/" + fileName;
-
+        URL resource = getClass().getClassLoader().getResource(file);
+        File fileName = Paths.get(resource.toURI()).toFile();
 
         CSVReader reader = new CSVReaderBuilder(new FileReader(fileName))
                 .withSkipLines(1)
