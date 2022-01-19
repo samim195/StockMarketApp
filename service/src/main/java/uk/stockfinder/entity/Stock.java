@@ -1,4 +1,4 @@
-package uk.stockfinder;
+package uk.stockfinder.entity;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -32,4 +32,6 @@ public class Stock {
     private String turnover;
     private String noOfShares;
     private String latestYield;
+
+    public static Stock.StockBuilder builder() {return new Stock.StockBuilder();}
 }
