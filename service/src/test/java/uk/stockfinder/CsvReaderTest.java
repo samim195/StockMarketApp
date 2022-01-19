@@ -11,7 +11,7 @@ import java.util.List;
 public class CsvReaderTest {
 
     @Test
-    void test() throws Exception {
+    void givenStockListVerifyStockObjectContainsSpecificData() throws Exception {
         //When
         CsvReader csvReader = new CsvReader();
         Stock build = Stock.builder()
