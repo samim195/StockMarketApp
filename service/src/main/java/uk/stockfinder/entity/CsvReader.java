@@ -1,4 +1,4 @@
-package uk.stockfinder;
+package uk.stockfinder.entity;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class CsvReader {
+public class CsvReader implements OpenFileReaderFunction {
 
 
+    @Override
     public List<Stock> readStockFromFile(String file) throws Exception {
-
 
         URL resource = getClass().getClassLoader().getResource(file);
         File fileName = Paths.get(resource.toURI()).toFile();
