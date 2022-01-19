@@ -2,6 +2,9 @@ package uk.stockfinder;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import uk.stockfinder.entity.Stock;
+import uk.stockfinder.entity.CsvReader;
+import uk.stockfinder.valueobject.FileConstant;
 
 import java.util.List;
 
@@ -11,7 +14,7 @@ public class CsvReaderTest {
     void test() throws Exception {
         //When
         CsvReader csvReader = new CsvReader();
-        Stock build = new Stock.StockBuilder()
+        Stock build = Stock.builder()
                 .name("888 Holdings Plc")
                 .isin("GI000A0F6407")
                 .epic("888")
