@@ -1,25 +1,40 @@
-package uk.stockfinder.entity;
+package uk.stockfinder.daoimplementations;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import org.springframework.stereotype.Component;
+import uk.stockfinder.daos.CsvDao;
+import uk.stockfinder.entity.Stock;
 
 import java.io.File;
 import java.io.FileReader;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Component
-public class CsvReaderImpl implements CsvReader {
+public class CsvReaderDao implements CsvDao {
+
+    public CsvReaderDao() {
+    }
 
     @Override
     public List<Stock> readStockFromFile(String file) throws Exception {
 
-        URL resource = getClass().getClassLoader().getResource(file);
-        File fileName = Paths.get(Objects.requireNonNull(resource).toURI()).toFile();
+        if (file.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        URL resource = getClass().getClassLoader().getResource(Objects.requireNonNull(file));
+        File fileName;
+        try {
+            fileName = Paths.get(Objects.requireNonNull(resource).toURI()).toFile();
+        } catch (Exception e) {
+            throw new NullPointerException("Resource was null check value of resource: " + file);
+        }
 
         CSVReader reader = new CSVReaderBuilder(new FileReader(fileName))
                 .withSkipLines(1)
@@ -27,7 +42,7 @@ public class CsvReaderImpl implements CsvReader {
 
         return reader.readAll()
                 .stream()
-                .map(data -> new Stock.StockBuilder()
+                .map(data -> Stock.builder()
                         .name(data[0])
                         .isin(data[1])
                         .epic(data[2])

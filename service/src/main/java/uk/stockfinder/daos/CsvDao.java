@@ -1,7 +1,9 @@
-package uk.stockfinder.entity;
+package uk.stockfinder.daos;
+
+import uk.stockfinder.entity.Stock;
 
 import java.util.List;
 
-@FunctionalInterface  interface OpenFileReaderFunction {
+public interface CsvDao {
     List<Stock> readStockFromFile(String file) throws Exception;
 }
