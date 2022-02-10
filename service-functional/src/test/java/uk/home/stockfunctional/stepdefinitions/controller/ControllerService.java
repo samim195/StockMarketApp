@@ -1,13 +1,13 @@
-package stepdefinitions.controller;
+package uk.home.stockfunctional.stepdefinitions.controller;
 
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import utils.SpringIntegrationTest;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import uk.home.stockfunctional.utils.SpringIntegrationTest;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-public class ControllerService extends SpringIntegrationTest {
+public class ControllerService {
 
     @When("^the client calls /stocks$")
     public void the_client_issues_GET_version() throws Throwable{

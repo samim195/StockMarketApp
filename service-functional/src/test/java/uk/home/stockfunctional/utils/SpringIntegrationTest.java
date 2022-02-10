@@ -1,6 +1,4 @@
-package utils;
-
-import org.springframework.boot.test.context.SpringBootTest;
+package uk.home.stockfunctional.utils;
 
 import java.io.IOException;
 import java.net.URI;
@@ -8,7 +6,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-@SpringBootTest
 public class SpringIntegrationTest {
 
     public static HttpResponse httpResponse;
