@@ -2,8 +2,10 @@ package uk.stockfinder;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import uk.stockfinder.factory.ReaderFactoryImpl;
+import uk.stockfinder.reader.CsvDao;
+import uk.stockfinder.factory.ReaderFactoryDao;
 import uk.stockfinder.entity.Stock;
-import uk.stockfinder.entity.CsvReader;
 import uk.stockfinder.valueobject.FileConstant;
 
 import java.util.List;
@@ -12,8 +14,32 @@ public class CsvReaderTest {
 
     @Test
     void givenStockListVerifyStockObjectContainsSpecificData() throws Exception {
-        //When
-        CsvReader csvReader = new CsvReader();
+        //Given
+        ReaderFactoryDao readerFactoryDao = new ReaderFactoryImpl();
+        CsvDao csvDao = readerFactoryDao.makeCsvReader();
+//        List<Stock> stocks = new ArrayList<Stock>(new Stock("888 Holdings Plc",
+//                "GI000A0F6407",
+//                "888",
+//                "382.80",
+//                "38280.0",
+//                "16.0",
+//                "2.4%",
+//                "3.4%",
+//                "4.4",
+//                "30.1%",
+//                "239900%," +
+//                        "1.8",
+//                "1425",
+//                "FTSE250",
+//                "Travel",
+//                "24",
+//                "19.6",
+//                "15.7",
+//                "11",
+//                "9",
+//                "13","487", "487",
+//                "164", "190",
+//                "698", "3.4%"));
         Stock build = Stock.builder()
                 .name("888 Holdings Plc")
                 .isin("GI000A0F6407")
@@ -43,10 +69,11 @@ public class CsvReaderTest {
                 .latestYield("3.4%")
                 .build();
 
-        //Then
-        List<Stock> stockList = csvReader.readStockFromFile(FileConstant.FILE_NAME);
+//        when(csvReader.readStockFromFile(any())).thenReturn(List<Stock>);
+        List<Stock> stockList = csvDao.readStockFromFile(FileConstant.FILE_NAME);
 
-        //Verify
+        //Then
+//        assertThat(stockList.get(0).getName()).isEqualTo(build.getName());
         Assertions.assertEquals(build.getName(), stockList.get(0).getName());
         Assertions.assertEquals(build.getPrice(), stockList.get(0).getPrice());
         Assertions.assertEquals(build.getEpsGrowth(), stockList.get(0).getEpsGrowth());
@@ -54,4 +81,5 @@ public class CsvReaderTest {
         Assertions.assertEquals(build.getTurnover(), stockList.get(0).getTurnover());
         Assertions.assertEquals(build.getLatestYield(), stockList.get(0).getLatestYield());
     }
+
 }

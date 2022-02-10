@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'junit:junit:4.13.1'
+    testImplementation 'info.cukes:cucumber-java:1.2.6'
+    testImplementation 'info.cukes:cucumber-junit:1.2.6'
+    testImplementation 'info.cukes:cucumber-spring:1.2.6'
+    testCompileOnly 'info.cukes:cucumber-core:1.2.6'
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-test', version: '1.4.0.RELEASE'
+
+
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -28,6 +28,15 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
     testImplementation group: 'com.github.tomakehurst', name: 'wiremock', version: '2.27.2'
+
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '2.1.0'
+
+    testCompileOnly group: 'org.assertj', name: 'assertj-core', version: '2.0.0'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '2.0.0'
+
+
+
+
 }
 
 test {

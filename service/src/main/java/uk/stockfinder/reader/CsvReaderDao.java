@@ -1,9 +1,8 @@
-package uk.stockfinder.daoimplementations;
+package uk.stockfinder.reader;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import org.springframework.stereotype.Component;
-import uk.stockfinder.daos.CsvDao;
 import uk.stockfinder.entity.Stock;
 
 import java.io.File;

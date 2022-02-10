@@ -1,4 +1,4 @@
-package uk.stockfinder.daos;
+package uk.stockfinder.reader;
 
 import uk.stockfinder.entity.Stock;
 

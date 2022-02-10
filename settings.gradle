@@ -1,3 +1,4 @@
 rootProject.name = 'StockMarketApp'
 include 'service'
+include 'service-functional'
 

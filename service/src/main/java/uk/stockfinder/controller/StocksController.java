@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import uk.stockfinder.entity.Stock;
+import uk.stockfinder.factory.ReaderFactoryImpl;
+import uk.stockfinder.service.StocksService;
 import uk.stockfinder.service.StocksServiceImpl;
 
 import java.util.Collections;
@@ -14,6 +16,7 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+www.stockcalculator.com/stocks
 
 @RestController
 @RequestMapping("/stocks")
@@ -24,8 +27,7 @@ public class StocksController {
     @Autowired
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
 
-    @Autowired
-    private StocksServiceImpl stocksService;
+    private final StocksService stocksService = new StocksServiceImpl(new ReaderFactoryImpl());
 
     @GetMapping("")
     public List<Stock> getStocks() throws Exception {
