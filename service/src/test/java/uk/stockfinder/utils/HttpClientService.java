@@ -20,4 +20,12 @@ public class HttpClientService {
         HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
         return response;
     }
+
+    public HttpResponse getRequestWithParam(String path) throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder(URI.create(url + path)).build();
+
+        HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        return response;
+    }
 }

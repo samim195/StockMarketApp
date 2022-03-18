@@ -1,9 +1,9 @@
-package uk.stockfinder.reader;
+package uk.stockfinder.domain.reader;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
+import uk.stockfinder.domain.entity.Stock;
 import org.springframework.stereotype.Component;
-import uk.stockfinder.entity.Stock;
 
 import java.io.File;
 import java.io.FileReader;

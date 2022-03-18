@@ -1,7 +1,7 @@
 package uk.stockfinder.factory;
 
-import uk.stockfinder.reader.CsvDao;
+import uk.stockfinder.reader.CsvReader;
 
 public interface ReaderFactoryDao {
-    CsvDao makeCsvReader();
+    public CsvReader makeCsvReader();
 }

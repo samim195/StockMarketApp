@@ -76,6 +76,31 @@ class StocksServiceImplTest {
         stubFor(get(urlEqualTo("/stocks")).willReturn(aResponse().withJsonBody(node)));
 
         //When
+        HttpResponse response = httpClientService.getRequestWithParam("peterlynch");
+        String actualResponseBody = response.body().toString();
+        int statusCode = response.statusCode();
+
+
+        //Then
+        Assertions.assertEquals(200, statusCode);
+        Assertions.assertEquals(expectedResponseBody, actualResponseBody);
+    }
+
+    @Test
+    void whenStocksEndpointIsQueriedWithPERatioParamShouldReturn200AndBodyWithDesiredStock () throws IOException, InterruptedException, URISyntaxException {
+        //Given
+        Stock stock = buildStock();
+
+        this.url = url + "/name/888 Holdings Plc";
+        String expectedResponseBody = "{\"name\":\"888 Holdings Plc\",\"isin\":\"GI000A0F6407\",\"epic\":\"888\",\"price\":\"382.80\",\"historicalPE\":\"38280.0\",\"historicalYield\":\"2.4%\",\"forecastYield\":\"3.4%\",\"ptbv\":\"4.4\",\"gearing\":\"30.1%\",\"epsGrowth\":\"239900%\",\"forecastCover\":\"1.8\",\"capitalisation\":\"1,425\",\"index\":\"FTSE250\",\"sector\":\"Travel And Leisure\",\"pe2022\":\"16.0\"}";
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode node = objectMapper.convertValue(stock, JsonNode.class);
+
+        stubFor(get(urlEqualTo("/stocks/peterlynch")).willReturn(aResponse().withStatus(200)));
+        stubFor(get(urlEqualTo("/stocks/peterlynch")).willReturn(aResponse().withJsonBody(node)));
+
+        //When
         HttpResponse response = httpClientService.getRequest();
         String actualResponseBody = response.body().toString();
         int statusCode = response.statusCode();

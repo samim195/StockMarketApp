@@ -7,6 +7,7 @@ import lombok.Getter;
 @Getter
 @Builder
 @AllArgsConstructor
+@Deprecated
 public class Stock {
     private String name;
     private String isin;
@@ -18,7 +19,7 @@ public class Stock {
     private String forecastYield;
     private String ptbv;
     private String gearing;
-    private String epsGrowth;
+    private String epsGrowth; //EPS growth refers to the positive change between earnings per share values reported by the company
     private String forecastCover;
     private String capitalisation;
     private String index;
